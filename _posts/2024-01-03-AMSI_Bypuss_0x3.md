@@ -9,7 +9,7 @@ Below a clear image of that guy, aka EthicalChaos.
 
 All the information present here are a summary of the great EthicalChaos research performed to find the best way to bypass AMSI and run SharpBlock without problems.
 If you want to deep dive on the research and how SharpBlock works (highly recommended, it's a masterpiece) click on the link below:
-(https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/)
+(`https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/`)
 
 This post intends to gather ideas from the research done by CCob and with graphical evidence and tests explain the technique to bypass AMSI.
 Far be it from me to think that I copy others' research ;) 5haring is caring, remember!
@@ -18,7 +18,7 @@ Brief preamble needed: the hierarchy of calls to the amsi.dll load
 
 ![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/729dc4a1-cf56-4a5e-bda7-6dfe811537c1)
 
-https://learn.microsoft.com/en-us/windows/win32/api/amsi/nf-amsi-amsiinitialize
+`https://learn.microsoft.com/en-us/windows/win32/api/amsi/nf-amsi-amsiinitialize`
 
 With the method to bypass AMSI by setting a null AmsiContext pointer to the AmsiOpenSession, the session was not "opened," but the AmsiInitialize call was there.
 Why not patching memory like AmsiScanBuffer() or AmsiInitFailed()? Cause it will can be detected form tools like AMSIDetection and/or those functions must be called before patching it.
@@ -45,7 +45,8 @@ So leaving out all the details of why and how EthicalChaos came to this conclusi
 
 Below the structure that its used to enable EnaableBreakpoints:
 
-`public static void EnableBreakpoint(WinAPI.CONTEXT64 ctx, IntPtr address, int index)
+~~~cpp
+public static void EnableBreakpoint(WinAPI.CONTEXT64 ctx, IntPtr address, int index)
         {
             switch (index)
             {
@@ -70,9 +71,10 @@ Below the structure that its used to enable EnaableBreakpoints:
             ctx.Dr6 = 0;
             // Now copy the changed ctx into the original struct
             Marshal.StructureToPtr(ctx, pCtx, true);
-}`
+}
+~~~
 
-https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell?tab=readme-ov-file#Using-Hardware-Breakpoints
+`https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell?tab=readme-ov-file#Using-Hardware-Breakpoints`
 
 Intercepting the call and change the return address of the amsiInitialize before the open of the session, we can bypass the AMSI and no change is detected from AMSIDetection.
 
@@ -88,7 +90,7 @@ Intercepting the call and change the return address of the amsiInitialize before
 
 But, hardware breakpoints are used also in an other smart way, **by malwares**.
 
-"On the x86 architecture, a **debug register** is a register used by a processor for program debugging. There are six debug registers, named **DR0**...**DR7**, with DR4 and DR5 as obsolete synonyms for DR6 and DR7." (https://en.wikipedia.org/wiki/X86_debug_register ).
+"On the x86 architecture, a **debug register** is a register used by a processor for program debugging. There are six debug registers, named **DR0**...**DR7**, with DR4 and DR5 as obsolete synonyms for DR6 and DR7." (`https://en.wikipedia.org/wiki/X86_debug_register`).
 
 ![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/11dfc61c-16b9-46a4-8295-fc1e60d2dece)
 
@@ -96,7 +98,8 @@ But, hardware breakpoints are used also in an other smart way, **by malwares**.
 
 From the **[al-khaser](https://github.com/LordNoteworthy/al-khaser)** project, below the anti-debug hardwarebreakpoints cpp code:
 
-`#include "pch.h"
+~~~cpp
+#include "pch.h"
 #include "HardwareBreakpoints.h"
 /*
 Hardware breakpoints are a technology implemented by Intel in their processor architecture,
@@ -124,7 +127,8 @@ BOOL HardwareBreakpoints()
 		VirtualFree(ctx, 0, MEM_RELEASE);
 	}
 	return bResult;
-}`
+}
+~~~
 
 
 ---
@@ -143,9 +147,11 @@ This log is enabled by default, if not, to enable script block logging, go to th
 
 Some pseudo code for SIEMs
 
-`SecurityEvent
+~~~
+SecurityEvent
 | where EventID == 4104
-| where AdditionalInfo contains "WinAPI.CONTEXT64" and AdditionalInfo contains "ctx.Dr0" and AdditionalInfo contains "ctx.Dr1" and AdditionalInfo contains "ctx.Dr2" and AdditionalInfo contains "ctx.Dr3" `
+| where AdditionalInfo contains "WinAPI.CONTEXT64" and AdditionalInfo contains "ctx.Dr0" and AdditionalInfo contains "ctx.Dr1" and AdditionalInfo contains "ctx.Dr2" and AdditionalInfo contains "ctx.Dr3"
+~~~
 
 ---
 
