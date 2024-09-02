@@ -1,4 +1,3 @@
-## About
 I'm Francesco Facoetti, **5hid**obu
 
 Cyber Security and Malware Analysis enthusiast. 
