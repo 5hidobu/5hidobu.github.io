@@ -90,13 +90,13 @@ Intercepting the call and change the return address of the amsiInitialize before
 
 But, hardware breakpoints are used also in an other smart way, **by malwares**.
 
-"On the x86 architecture, a **debug register** is a register used by a processor for program debugging. There are six debug registers, named **DR0**...**DR7**, with DR4 and DR5 as obsolete synonyms for DR6 and DR7." (`https://en.wikipedia.org/wiki/X86_debug_register`).
+"On the x86 architecture, a **debug register** is a register used by a processor for program debugging. There are six debug registers, named **DR0**...**DR7**, with DR4 and DR5 as obsolete synonyms for DR6 and DR7." [wiki_debug_register](https://en.wikipedia.org/wiki/X86_debug_register).
 
 ![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/11dfc61c-16b9-46a4-8295-fc1e60d2dece)
 
 **Malwares with anti-debug checks** verify the contents of the first four debug registers to see if the hardware breakpoints has been set.
 
-From the **[al-khaser](https://github.com/LordNoteworthy/al-khaser)** project, below the anti-debug hardwarebreakpoints cpp code:
+From the [al-khaser](https://github.com/LordNoteworthy/al-khaser) project, below the anti-debug hardwarebreakpoints cpp code:
 
 ~~~cpp
 #include "pch.h"
@@ -141,7 +141,7 @@ From a Blue Team perspective, also here with this technique we can observe the E
 
 ![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/55c45a59-e7f5-41db-9c81-aadd6cd6a688)
 
-This log is enabled by default, if not, to enable script block logging, go to the Windows PowerShell GPO settings and set Turn on PowerShell Script Block Logging to enabled. Alternately, you can set the following registry value: “HKLM\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging → EnableScriptBlockLogging = 1” ([https://docs.splunk.com/Documentation/UBA/5.1.0.1/GetDataIn/AddPowerShell#:~:text=To%20enable%20script%20block%20logging,Script%20Block%20Logging%20to%20enabled.&text=In%20addition%2C%20turn%20on%20command%20line%20process%20auditing](https://docs.splunk.com/Documentation/UBA/5.1.0.1/GetDataIn/AddPowerShell#:~:text=To%20enable%20script%20block%20logging,Script%20Block%20Logging%20to%20enabled.&text=In%20addition%2C%20turn%20on%20command%20line%20process%20auditing).)
+This log is enabled by default, if not, to enable script block logging, go to the Windows PowerShell GPO settings and set Turn on PowerShell Script Block Logging to enabled. Alternately, you can set the following registry value: “HKLM\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging → EnableScriptBlockLogging = 1” ([docs.splunk](https://docs.splunk.com/Documentation/UBA/5.1.0.1/GetDataIn/AddPowerShell#:~:text=To%20enable%20script%20block%20logging,Script%20Block%20Logging%20to%20enabled.&text=In%20addition%2C%20turn%20on%20command%20line%20process%20auditing).)
 
 ---
 
