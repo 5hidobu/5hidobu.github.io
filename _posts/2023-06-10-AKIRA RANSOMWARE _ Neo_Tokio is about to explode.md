@@ -1,3 +1,13 @@
+---
+layout: post
+title: Akira Ransomware - NEO Tokyo is about to explode
+subtitle: Brief analysis of the first version of the ransomware specimen used to ransom companies around the globe by the group named Akira.
+---
+
+>
+
+
+
 # THE AKIRA RANSOMWARE
 
 ![image](https://github.com/user-attachments/assets/846cc351-9b1f-4903-a27b-6d01dc715308)
