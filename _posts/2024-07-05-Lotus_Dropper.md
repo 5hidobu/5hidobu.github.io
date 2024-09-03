@@ -10,6 +10,7 @@ subtitle: Code analysis of a dropper developed and deployed during espionage cam
 # Dropper Analysis
 
 ![image](https://github.com/user-attachments/assets/11976063-63c0-405c-966a-db7032b3b1bf)
+
 fo sho pic of the dropper.
 
 The specimen is recognized as malware developed and deployed during espionage campaigns by Chinese nexus threat group Lotus Blossom. 
@@ -31,7 +32,7 @@ Implementing a dropper is a strategic choice for cybercriminals seeking to deliv
 ---
 ## Lotus Blossom Dropper(s)
 Lotus Blossom employs a sophisticated dropper to disseminate malware, primarily targeting government and military organizations in Southeast Asia. 
-Kind of Lotus Blossom developed droppers exploits the Microsoft Office vulnerability CVE-2012-0158, often delivered through spear phishing emails containing malicious Word document attachments. This kind of sample is described here (link:https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/research/unit42-operation-lotus-blossom).
+Kind of Lotus Blossom developed droppers exploits the Microsoft Office vulnerability CVE-2012-0158, often delivered through spear phishing emails containing malicious Word document attachments. This kind of sample is described [here](link:https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/research/unit42-operation-lotus-blossom).
 The sample under analysis is not related to those that exploited the Office CVE, but represents the well-known characteristics used by a dropper to continue in the infection chain. Probably a version developed for a campaign without the CVE exploit feature.
 
 ![image](https://github.com/user-attachments/assets/198e388e-36fc-4aa1-9113-30a54c73e008)
@@ -74,7 +75,7 @@ LPVOID LockResource(
 
 ---
 
-## Let's start to observe the specimen
+# Let's start to observe the specimen
 
 the hash of the sample under analysis is indicated below:
 57816A296E7C575DCEEA2C2FE5171A298E17F73A
@@ -103,7 +104,7 @@ Ghidrino.jpg
 
 ---
 
-## Code Analysis - fasten your seat belts
+# Code Analysis - fasten your seat belts
 not because it is very complicated, but because all the instructions are described (perhaps even too much) to clarify the assembly.
 Also sorry for the scribbled screenshots, hope it'll helps.
 
@@ -187,7 +188,7 @@ further stager is dropped on disk
 
 I swear, its finished.
 
-## EasterEgg - CreateMutex
+### EasterEgg - CreateMutex
 
 another important (and juicy) FUN must be highlighted, "CreateMutexA", "CreateMutexA is used to create a new mutex object. Mutexs are often used by malware to prevent the reinfection of a system with the same or different malware variant." (https://malapi.io/winapi/CreateMutexA)
 
