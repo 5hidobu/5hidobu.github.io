@@ -78,20 +78,26 @@ LPVOID LockResource(
 
 the hash of the sample under analysis is indicated below:
 57816A296E7C575DCEEA2C2FE5171A298E17F73A
+
 ![image](https://github.com/user-attachments/assets/8ca88ead-8239-4f9a-ae6c-78c6b2f634ca)
 
 as we can see, magic bytes 4D 5A indicate that its an executable binary.
+
 ![image](https://github.com/user-attachments/assets/23c9f420-979b-4041-8141-0c9cece14141)
 
 in particular, its a dll:
+
 ![image](https://github.com/user-attachments/assets/6786379a-79f8-4308-abf7-ab530b5672f9)
 
 as we saw before, a kind (the simple one) of a dropper it can locate, load and lock a resource that it is embedded inside of itself. 
 We can see the resources and locate the binary ("ASDASDSADASD..") that will be loaded and "dropped by the dropper".
+
 ![image](https://github.com/user-attachments/assets/3f71e96b-900b-46e7-a127-947c7c5152d2)
 
 right here we can dump the content and don't proceed with further code analysis, but you are here to see the code analysis, so.. lets just call our faithful neighbourhood NSA dragon and have him disassembled:
+
 ![image](https://github.com/user-attachments/assets/cd3be696-ef6e-4613-a349-77dc832c53ae)
+
 Ghidrino.jpg
 (fo sho pic of Ghidra)
 
