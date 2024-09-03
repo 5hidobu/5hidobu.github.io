@@ -1,6 +1,14 @@
-# AMSI_bypuss
-AMSI stands for "Antimalware Scan Interface." This script essentially smashes the AMSI protection by breaking one of the components in the AMSI chain. How can we detect this kind of technique? keep reading.
+---
+layout: post
+title: AMSI bypuss 0x1
+subtitle: AMSI stands for "Antimalware Scan Interface." This script essentially smashes the AMSI protection by breaking one of the components in the AMSI chain. How can we detect this kind of technique? keep reading.
+---
 
+>
+
+
+
+# AMSI_bypuss_0x1
 
 ![881b1972cd1a67891f80aa1931bdb438 (1)](https://user-images.githubusercontent.com/65976929/214705830-9f35e0dc-0f3c-4c86-969b-a048ac213696.jpg)
 
