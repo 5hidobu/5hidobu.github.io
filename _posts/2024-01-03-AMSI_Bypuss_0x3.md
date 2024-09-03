@@ -1,6 +1,16 @@
-# AMSI_bypuss_0x3
-This technique permit to achieve another AMSI bypass via hardware breakpoints. How can we detect this kind of technique? keep reading.
 ---
+layout: post
+title: AMSI bypuss 0x3
+subtitle: This technique permit to achieve another AMSI bypass via hardware breakpoints. How can we detect this kind of technique? keep reading.
+---
+
+>
+
+
+
+
+
+# AMSI_bypuss_0x3
 
 Everything begin when a freak guy named CCob develop **SharpBlock**, tool that operates by implementing a debugger that listens for DLL load events and prevents the DLL entry point from executing in order to stealth kicking in the ass EDRs.
 Below a clear image of that guy, aka EthicalChaos.
