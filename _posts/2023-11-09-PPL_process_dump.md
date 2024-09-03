@@ -1,6 +1,10 @@
-What is it a PP/PPL process, how can we bypass it and how can we detect related bypass attempt pattern? keep reading.
-
 ---
+layout: post
+title: PPL process dump
+subtitle: What is it a PP/PPL process, how can we bypass it and how can we detect related bypass attempt pattern? keep reading.
+---
+
+
 
 ## PPL Process 101
 
