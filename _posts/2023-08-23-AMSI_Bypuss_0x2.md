@@ -1,7 +1,14 @@
-# AMSI_bypuss_0x2
-This technique permit to force AmsiInitFailed via a null AmsiContext pointer invoking AmsiOpenSession. How can we detect this kind of technique? keep reading.
-
 ---
+layout: post
+title: AMSI bypuss 0x2
+subtitle: This technique permit to force AmsiInitFailed via a null AmsiContext pointer invoking AmsiOpenSession. How can we detect this kind of technique? keep reading.
+---
+
+>
+
+
+
+# AMSI_bypuss_0x2
 
 As covered in the other blogpost (https://5hidobu.github.io/2023-04-23-AMSI_Bypuss_0x1/) there are several methods to impair defenses by bypassing AMSI. Introduced with Windows 10, AMSI stands for "Antimalware Scan Interface”, an API that enables to sending content to vendor endpoint security agent, each command or script that it is run in a Powershell session e.g. is fetched by AMSI and sent to installed antivirus software for inspection.
 When an application attempts to submit content to be scanned by a vendor agent, the application loads amsi.dll and calls its functions in order to establish an AMSI session, the content to bescanned is then submitted and checked.
