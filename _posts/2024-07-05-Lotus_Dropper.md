@@ -9,7 +9,7 @@ subtitle: Code analysis of a dropper developed and deployed during espionage cam
 
 # Dropper Analysis
 
-![image](https://github.com/user-attachments/assets/11976063-63c0-405c-966a-db7032b3b1bf)
+![image](https://github.com/user-attachments/assets/db89ce7a-862b-46dd-9df8-9f048a73cc91)
 
 fo sho pic of the dropper.
 
