@@ -35,8 +35,7 @@ Lotus Blossom employs a sophisticated dropper to disseminate malware, primarily 
 Kind of Lotus Blossom developed droppers exploits the Microsoft Office vulnerability CVE-2012-0158, often delivered through spear phishing emails containing malicious Word document attachments. This kind of sample is described [here](link:https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/research/unit42-operation-lotus-blossom).
 The sample under analysis is not related to those that exploited the Office CVE, but represents the well-known characteristics used by a dropper to continue in the infection chain. Probably a version developed for a campaign without the CVE exploit feature.
 
-![image](https://github.com/user-attachments/assets/198e388e-36fc-4aa1-9113-30a54c73e008)
-
+<p align=center><img src="https://github.com/user-attachments/assets/198e388e-36fc-4aa1-9113-30a54c73e008" /></p>
 
 ---
 ## Dropper 102
