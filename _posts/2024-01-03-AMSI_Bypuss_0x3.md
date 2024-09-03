@@ -5,7 +5,7 @@ This technique permit to achieve another AMSI bypass via hardware breakpoints. H
 Everything begin when a freak guy named CCob develop **SharpBlock**, tool that operates by implementing a debugger that listens for DLL load events and prevents the DLL entry point from executing in order to stealth kicking in the ass EDRs.
 Below a clear image of that guy, aka EthicalChaos.
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/220b848d-ccdd-4c4b-8eca-e5684a0197c3)
+![image](https://github.com/user-attachments/assets/d0d06848-2ca5-49c2-9a75-3e31298ca1bc)
 
 All the information present here are a summary of the great EthicalChaos research performed to find the best way to bypass AMSI and run SharpBlock without problems.
 If you want to deep dive on the research and how SharpBlock works (highly recommended, it's a masterpiece) click on the link below:
@@ -16,7 +16,7 @@ Far be it from me to think that I copy others' research ;) 5haring is caring, re
 
 Brief preamble needed: the hierarchy of calls to the amsi.dll load
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/729dc4a1-cf56-4a5e-bda7-6dfe811537c1)
+![image](https://github.com/user-attachments/assets/5ab19132-7aa3-4892-8ebe-2ad7c486a752)
 
 `https://learn.microsoft.com/en-us/windows/win32/api/amsi/nf-amsi-amsiinitialize`
 
@@ -25,11 +25,11 @@ Why not patching memory like AmsiScanBuffer() or AmsiInitFailed()? Cause it will
 
 The goal of this bypass is to change the current instruction pointer back to the caller of AmsiInitialize and update the return value with 0x8007002 to indicate that AMSI is currently disabled, how? with hardware breakpoints!
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/0eaba79a-7072-4add-9eab-4d4e11128068)
+![image](https://github.com/user-attachments/assets/1cfe441c-7f6c-4875-9e23-3874ad6abd5e)
 
 Below an overview of the state of relevant registers when AmsiInitialize breakpoint is hit:
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/9202383f-8a67-4a04-a853-9216903e51ac)
+![image](https://github.com/user-attachments/assets/e4e21d86-c166-4b89-9c89-c3a9893679dd)
 
 So leaving out all the details of why and how EthicalChaos came to this conclusion, 3 points are required to make this bypass:
 
@@ -39,7 +39,7 @@ So leaving out all the details of why and how EthicalChaos came to this conclusi
 
 **SharpBlocks implementions of DisableAMSI:**
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/ed69ff02-3c37-419e-8652-fd2c0fcbb26f)
+![image](https://github.com/user-attachments/assets/a0d5e120-6801-49a6-bb34-5547740dce96)
 
 "The Context64 class used within the code above is a light wrapper around the native API’s GetThreadContext and SetThreadContext, which essentially enable applications to query and change the current state of a thread and its registers.  The thread that called AmsiInitialize is now in a state indicating AMSI has been disabled and no context was created."
 
@@ -78,21 +78,21 @@ public static void EnableBreakpoint(WinAPI.CONTEXT64 ctx, IntPtr address, int in
 
 Intercepting the call and change the return address of the amsiInitialize before the open of the session, we can bypass the AMSI and no change is detected from AMSIDetection.
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/f28f3930-4678-4e5b-9c14-b970b8e57b77)
+![image](https://github.com/user-attachments/assets/9d98e811-f6ba-4a6f-a18f-21eca1d18d59)
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/d4c7a51b-d230-4485-bb94-c5297e7bdeea)
+![image](https://github.com/user-attachments/assets/f636cf80-edfb-4dad-9e82-394ca506c4b1)
 
 
 ---
 ## Debug Registers, Hardware Breakpoints, Malwares anti-debug technique
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/d3a47122-9ae1-4d81-bb02-c4b13fe7a29e)
+![image](https://github.com/user-attachments/assets/25390c9e-bc0c-4404-b1d3-448df2e39caa)
 
 But, hardware breakpoints are used also in an other smart way, **by malwares**.
 
 "On the x86 architecture, a **debug register** is a register used by a processor for program debugging. There are six debug registers, named **DR0**...**DR7**, with DR4 and DR5 as obsolete synonyms for DR6 and DR7." [wiki_debug_register](https://en.wikipedia.org/wiki/X86_debug_register).
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/11dfc61c-16b9-46a4-8295-fc1e60d2dece)
+![image](https://github.com/user-attachments/assets/0f125dee-5cc4-4bb3-b55a-cee496f56b8f)
 
 **Malwares with anti-debug checks** verify the contents of the first four debug registers to see if the hardware breakpoints has been set.
 
@@ -135,11 +135,11 @@ BOOL HardwareBreakpoints()
  as always..
 ## Let’s take a look from **Blue Team** perspective.
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/2d43e779-9833-4dd6-a2fe-20df4f9b8e31)
+![image](https://github.com/user-attachments/assets/c7bdd6d9-cf95-43ea-9ae9-913af050caff)
 
 From a Blue Team perspective, also here with this technique we can observe the EID 4104 (Powershell Operational Log). With the evidences about the command executed in the Powershell session it can be possible write a precise detection rule in order to detect technique execution attempt.
 
-![image](https://github.com/5hidobu/5hidobu.github.io/assets/65976929/55c45a59-e7f5-41db-9c81-aadd6cd6a688)
+![image](https://github.com/user-attachments/assets/b384c79b-dab1-490a-8c9b-8db5824e2efd)
 
 This log is enabled by default, if not, to enable script block logging, go to the Windows PowerShell GPO settings and set Turn on PowerShell Script Block Logging to enabled. Alternately, you can set the following registry value: “HKLM\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging → EnableScriptBlockLogging = 1” ([docs.splunk](https://docs.splunk.com/Documentation/UBA/5.1.0.1/GetDataIn/AddPowerShell#:~:text=To%20enable%20script%20block%20logging,Script%20Block%20Logging%20to%20enabled.&text=In%20addition%2C%20turn%20on%20command%20line%20process%20auditing).)
 
