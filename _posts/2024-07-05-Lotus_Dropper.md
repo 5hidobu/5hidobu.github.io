@@ -44,32 +44,32 @@ Droppers (**the simple ones**) often utilize the following Windows API calls to 
 #### FindResource
 The **FindResource** function is used to locate a resource with the specified type and name in the specified module. It returns a handle to the resource's information block. This handle is then passed to **LoadResource** to obtain a handle to the actual resource data.
 
-~~~
+```cpp
 HRSRC FindResourceW(
   [in, optional] HMODULE hModule,
   [in]           LPCWSTR lpName,
   [in]           LPCWSTR lpType
 );
-~~~
+```
 
 #### LoadResource
 The **LoadResource** function retrieves a handle that can be used to obtain a pointer to the first byte of the specified resource in memory. It takes the module handle and the resource handle returned by **FindResource** as input parameters.
 
-~~~
+```cpp
 HGLOBAL LoadResource(
   [in, optional] HMODULE hModule,
   [in]           HRSRC   hResInfo
 );
-~~~
+```
 
 #### LockResource
 The **LockResource** function obtains a pointer to the first byte of the loaded resource. It takes the handle returned by **LoadResource** as input and returns a pointer to the resource data.
 
-~~~
+```cpp
 LPVOID LockResource(
   [in] HGLOBAL hResData
 );
-~~~
+```
 
 **By calling these functions in succession, a dropper can locate, load, and execute malicious code embedded as a resource within the executable.** The FindResource and LoadResource functions retrieve a handle to the resource data, while LockResource provides a direct pointer to the resource bytes in memory, allowing the dropper to execute the embedded malware payload
 
