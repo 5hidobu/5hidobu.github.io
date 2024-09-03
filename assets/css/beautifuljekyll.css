@@ -888,11 +888,11 @@ pre {
 }
 .highlight > pre {
   background-image: linear-gradient(
-    rgba(0,0,0,0.03), rgba(0,0,0,0.03) 1.5em, rgba(0,0,0,0.02) 1.5em, rgba(0,0,0,0.02) 3em);
+    rgba(255,255,255,0.80), rgba(255,255,255,0.80) 1.5em, rgba(255,255,255,0.74) 1.5em, rgba(255,255,255,0.74) 3em);
   background-size: auto 3em;
   background-position-y: 0.625rem;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-left: 0.4375rem solid #444;
+  border: 1px solid rgba(221,0,0,0.10);
+  border-left: 0.4375rem solid #dd0000;
 }
 .highlight > pre:not([class~="highlight"]) { /* code block with line number */
   padding: 0;
