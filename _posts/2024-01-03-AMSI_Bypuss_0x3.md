@@ -12,14 +12,10 @@ subtitle: This technique permit to achieve another AMSI bypass via hardware brea
 
 # AMSI_bypuss_0x3
 
-Everything begin when a freak guy named CCob develop **SharpBlock**, tool that operates by implementing a debugger that listens for DLL load events and prevents the DLL entry point from executing in order to stealth kicking in the ass EDRs.
-Below a clear image of that guy, aka EthicalChaos.
-
-<img align="right" width="50" src="https://github.com/user-attachments/assets/d0d06848-2ca5-49c2-9a75-3e31298ca1bc">
-
+Everything begin when a freak guy named CCob (aka EthicalChaos) develop **SharpBlock**, tool that operates by implementing a debugger that listens for DLL load events and prevents the DLL entry point from executing in order to stealth kicking in the ass EDRs.
+<img align="left" width="150" src="https://github.com/user-attachments/assets/d0d06848-2ca5-49c2-9a75-3e31298ca1bc">
 All the information present here are a summary of the great EthicalChaos research performed to find the best way to bypass AMSI and run SharpBlock without problems.
-If you want to deep dive on the research and how SharpBlock works (highly recommended, it's a masterpiece) click on the link below:
-(`https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/`)
+If you want to deep dive on the research and how SharpBlock works (highly recommended, it's a masterpiece) click [here](https://www.pentestpartners.com/security-blog/patchless-amsi-bypass-using-sharpblock/).
 
 This post intends to gather ideas from the research done by CCob and with graphical evidence and tests explain the technique to bypass AMSI.
 Far be it from me to think that I copy others' research ;) 5haring is caring, remember!
@@ -27,7 +23,6 @@ Far be it from me to think that I copy others' research ;) 5haring is caring, re
 Brief preamble needed: the hierarchy of calls to the amsi.dll load
 
 ![image](https://github.com/user-attachments/assets/5ab19132-7aa3-4892-8ebe-2ad7c486a752)
-
 `https://learn.microsoft.com/en-us/windows/win32/api/amsi/nf-amsi-amsiinitialize`
 
 With the method to bypass AMSI by setting a null AmsiContext pointer to the AmsiOpenSession, the session was not "opened," but the AmsiInitialize call was there.
@@ -83,7 +78,6 @@ public static void EnableBreakpoint(WinAPI.CONTEXT64 ctx, IntPtr address, int in
             Marshal.StructureToPtr(ctx, pCtx, true);
 }
 ~~~
-
 `https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell?tab=readme-ov-file#Using-Hardware-Breakpoints`
 
 Intercepting the call and change the return address of the amsiInitialize before the open of the session, we can bypass the AMSI and no change is detected from AMSIDetection.
