@@ -71,12 +71,12 @@ Using known BYOVD (Bring Your Own Vulnerable Driver) attack technique: from MITR
 During some years, tools like `PPLDump` or `PPLKiller` could be used to bypass this protection, but in the last months, Microsoft patched the technique exploited by this vulnerability. 
 There is a way to abuse some features in existing drivers to get a handle to protected process and to perform operations with that handle. Perform tests with `PROCEXP152.sys` driver of Process Explorer, a known Sysinternal suite tool, with which it is possible to open a handle to a processes with access rights set to `PROCESS_ALL_ACCESS`. 
 
-![image](https://github.com/user-attachments/assets/0272c3d9-f905-4d1c-b876-69ebf8789781)
+<p align=center><img src="https://github.com/user-attachments/assets/0272c3d9-f905-4d1c-b876-69ebf8789781" /></p>
 
 Using `PPLBlade` tool developed by **tastypepperoni** (https://github.com/tastypepperoni/PPLBlade), which load `PROCEXP152.sys` as BYOVD technique, we can dump `lsass.exe` process even if it has PPL set as its protection level.
 `PPLBlade` can be used also for other purposes, but with the flag `--mode` it is possible to choose wich operation can be used, e.g. adding `dothatlsassthing` exploit the PROCEXP152 driver in order to dump `lsass.exe` protected process.
 
-![image](https://github.com/user-attachments/assets/ca38e088-c219-4d32-9970-722ae52ea23b)
+<p align=center><img src="https://github.com/user-attachments/assets/ca38e088-c219-4d32-9970-722ae52ea23b" /></p>
 
 This tool was also tested endpoints secured with EDR agents, at the time of writing of the post, 2023 fall, Defender is **unable** to detect this technique, some EDRs instead yes.
 
@@ -104,7 +104,7 @@ In addition the process execution must be correlated with evidences of a new ser
 
 This kind of technique is also used to bybass EDRs, as we saw recently with Terminator thunderstorm. `Terminator` is another tool distributed from a threat actor using the pseudonym “**Spyboy**” that use BYOVD technique to disable EDR. 
 
-![image](https://github.com/user-attachments/assets/132c7468-cb5e-455d-9408-809046d7a309)
+<p align=center><img src="https://github.com/user-attachments/assets/132c7468-cb5e-455d-9408-809046d7a309" /></p>
 
 This tool was also observed to be used by **BlackCat** Ransomware Group during their infection chain.
 
