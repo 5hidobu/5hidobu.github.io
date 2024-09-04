@@ -79,7 +79,7 @@ LPVOID LockResource(
 the hash of the sample under analysis is indicated below:
 57816A296E7C575DCEEA2C2FE5171A298E17F73A
 
-<img align="right" src="https://github.com/user-attachments/assets/8ca88ead-8239-4f9a-ae6c-78c6b2f634ca">
+<img align="left" src="https://github.com/user-attachments/assets/8ca88ead-8239-4f9a-ae6c-78c6b2f634ca">
 
 as we can see, magic bytes 4D 5A indicate that its an executable binary.
 
