@@ -15,7 +15,7 @@ subtitle: This technique permit to achieve another AMSI bypass via hardware brea
 Everything begin when a freak guy named CCob develop **SharpBlock**, tool that operates by implementing a debugger that listens for DLL load events and prevents the DLL entry point from executing in order to stealth kicking in the ass EDRs.
 Below a clear image of that guy, aka EthicalChaos.
 
-![image](https://github.com/user-attachments/assets/d0d06848-2ca5-49c2-9a75-3e31298ca1bc)
+<img align="right" width="50" src="https://github.com/user-attachments/assets/d0d06848-2ca5-49c2-9a75-3e31298ca1bc">
 
 All the information present here are a summary of the great EthicalChaos research performed to find the best way to bypass AMSI and run SharpBlock without problems.
 If you want to deep dive on the research and how SharpBlock works (highly recommended, it's a masterpiece) click on the link below:
