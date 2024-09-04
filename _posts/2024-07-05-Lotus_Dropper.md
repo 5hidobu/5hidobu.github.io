@@ -11,8 +11,6 @@ subtitle: Code analysis of a dropper developed and deployed during espionage cam
 
 ![image](https://github.com/user-attachments/assets/e39d9827-23f7-4aff-80b7-e166224b8dff)
 
-pic of the dropper.
-
 The specimen is recognized as malware developed and deployed during espionage campaigns by Chinese nexus threat group Lotus Blossom. 
 
  ![image](https://github.com/user-attachments/assets/ab74bde4-d02c-41d1-b751-2a99d7860da8)
