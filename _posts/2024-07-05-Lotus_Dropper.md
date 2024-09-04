@@ -9,9 +9,9 @@ subtitle: Code analysis of a dropper developed and deployed during espionage cam
 
 # Dropper Analysis
 
-![image](https://github.com/user-attachments/assets/db89ce7a-862b-46dd-9df8-9f048a73cc91)
+![image](https://github.com/user-attachments/assets/e39d9827-23f7-4aff-80b7-e166224b8dff)
 
-fo sho pic of the dropper.
+pic of the dropper.
 
 The specimen is recognized as malware developed and deployed during espionage campaigns by Chinese nexus threat group Lotus Blossom. 
 
@@ -79,7 +79,7 @@ LPVOID LockResource(
 the hash of the sample under analysis is indicated below:
 57816A296E7C575DCEEA2C2FE5171A298E17F73A
 
-![image](https://github.com/user-attachments/assets/8ca88ead-8239-4f9a-ae6c-78c6b2f634ca)
+<img align="right" width="350" src="https://github.com/user-attachments/assets/8ca88ead-8239-4f9a-ae6c-78c6b2f634ca">
 
 as we can see, magic bytes 4D 5A indicate that its an executable binary.
 
@@ -99,7 +99,6 @@ right here we can dump the content and don't proceed with further code analysis,
 ![image](https://github.com/user-attachments/assets/cd3be696-ef6e-4613-a349-77dc832c53ae)
 
 Ghidrino.jpg
-(fo sho pic of Ghidra)
 
 ---
 
