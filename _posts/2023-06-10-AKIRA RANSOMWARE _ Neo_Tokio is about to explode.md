@@ -21,15 +21,6 @@ Below Akira TOR domain address:
 
 ------
 
-This post it's based on below SHA256 sample.
-SHA256: 2084AB8F92A86A37A35879378610949E21EA7B5030313655BB82FE6C67772B0D
-
-![image](https://github.com/user-attachments/assets/7fd2c5c5-0d3f-43d9-a474-588ff5ee8a3d)
-
-at the time of the analysis there was no previous detections from public resources.
-
-------
-
 ![image](https://github.com/user-attachments/assets/59c27fbb-882b-42ff-9a5d-642c2ca8548c)
 
 Compile data stamp, that correspond to 22 days before detonation detected in a compromised infrastracture
