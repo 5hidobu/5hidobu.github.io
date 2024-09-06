@@ -48,7 +48,7 @@ right before the encryption blob, the sample remove shadow copy via powershell.
 ### Strings Selection:
 in the meantime, the sample compare strings (that correspond to files extension) to understand wich encrypt and wich not (`.dll` `.exe` `.sys` `.msi`), in order to don't interrupt the correct execution of the encryption process.
 
-![image](https://github.com/5hidobu/5hidobu.github.io/blob/1a9d40b90e3c789eeac450bce4e25056079a6f54/assets/img/IMG_4679.jpeg)
+![image](https://github.com/5hidobu/5hidobu.github.io/assets/img/IMG_4679.jpeg)
 
 ![image](https://github.com/user-attachments/assets/b848496c-53bf-4d53-a4d2-fe9920418306)
 
