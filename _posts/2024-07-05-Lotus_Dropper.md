@@ -179,7 +179,7 @@ further stager is dropped on disk
 
 ### EasterEgg - CreateMutex
 
-another important (and juicy) FUN must be highlighted, "CreateMutexA", "CreateMutexA is used to create a new mutex object. Mutexs are often used by malware to prevent the reinfection of a system with the same or different malware variant." (https://malapi.io/winapi/CreateMutexA)
+Another important (and juicy) FUN must be highlighted, "CreateMutexA", "CreateMutexA is used to create a new mutex object. Mutexs are often used by malware to prevent the reinfection of a system with the same or different malware variant." (https://malapi.io/winapi/CreateMutexA)
 
 ![image](https://github.com/user-attachments/assets/cd0edefa-922e-4e01-9cf9-f957cb793486)
 
@@ -188,6 +188,23 @@ parameters LPCSTR, based on MS docs, "The name of the mutex object.". In this ca
 Malware often calls the CreateMutex API to ensure that only one instance of the malware is running on the system at a time. By creating a named mutex with a predetermined hard-coded name, the malware can check if another instance is already running, otherwise could be killed itself. in summary CreateMutex API is a common tool used by malware to ensure single instance execution, maintain persistence, evade detection, and coordinate botnet activities.
 
 ---
+
+## Dropper 103
+
+Droppers employ various advanced techniques to evade detection and successfully deliver their malicious payloads.
+Some kind of droppers split the infection process into multiple stages, each delivered by a different file or script. This makes it harder to analyze the entire infection chain at once. 
+
+**Raspberry Robin**, first classified as a worm because of its spreading infection method via USB drives and WSF files, can indeed be classified as a kind of downloader/dropper.
+<p align=center><img src="https://github.com/user-attachments/assets/8785106f-4172-4caf-b196-6124e8f32383" /></p>
+@LambdaMamba Raspberry Robin Malwaremon 
+
+Once it infects a system, Raspberry Robin is designed to install and execute additional malware after initial infection. The payload delvery is one of the most interesting phase to observe, the malware is designed to drop various payloads based on its environment. For instance, it can drop fake payloads when it detects analysis tools, thereby evading detection while still delivering its malicious functionality. The purpose of the fake payload dropped by Raspberry Robin is to mislead security researchers and evade detection when the malware is running in sandboxes or being debugged, making it more difficult to detect and understand the full extent of the malware's capabilities. 
+
+This is an advanced evasion technique used by dropper and I hope to cover it in another post in order to share this huge and "must to be highlighted" (dropper) technique.
+
+
+---
+
 
 ![image](https://github.com/user-attachments/assets/7ea3dffd-d01f-4c7f-a6b1-39a3fef2262d)
 
