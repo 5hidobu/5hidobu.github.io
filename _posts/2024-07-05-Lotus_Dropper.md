@@ -196,7 +196,7 @@ Some kind of droppers split the infection process into multiple stages, each del
 
 **Raspberry Robin**, first classified as a worm because of its spreading infection method via USB drives and WSF files, can indeed be classified as a kind of downloader/dropper.
 <p align=center><img src="https://github.com/user-attachments/assets/8785106f-4172-4caf-b196-6124e8f32383" /></p>
-@LambdaMamba Raspberry Robin Malwaremon 
+@LambdaMamba RaspberryRobin Malwaremon 
 
 Once it infects a system, Raspberry Robin is designed to install and execute additional malware after initial infection. The payload delvery is one of the most interesting phase to observe, the malware is designed to drop various payloads based on its environment. For instance, it can drop fake payloads when it detects analysis tools, thereby evading detection while still delivering its malicious functionality. The purpose of the fake payload dropped by Raspberry Robin is to mislead security researchers and evade detection when the malware is running in sandboxes or being debugged, making it more difficult to detect and understand the full extent of the malware's capabilities. 
 
@@ -205,7 +205,5 @@ This is an advanced evasion technique used by dropper and I hope to cover it in 
 
 ---
 
-
-![image](https://github.com/user-attachments/assets/7ea3dffd-d01f-4c7f-a6b1-39a3fef2262d)
-
+![image](https://github.com/user-attachments/assets/a63de05a-3a80-4d02-89f8-de069b376233)
 ...ok mum
