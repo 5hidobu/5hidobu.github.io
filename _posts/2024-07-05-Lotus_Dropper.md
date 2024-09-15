@@ -15,7 +15,7 @@ The specimen is recognized as malware developed and deployed during espionage ca
 
  ![image](https://github.com/user-attachments/assets/ab74bde4-d02c-41d1-b751-2a99d7860da8)
   
-Lotus Blossom is a cybercriminal group identified as responsible for a persistent cyber espionage campaign targeting government and military organizations in Southeast Asia. This group employs spear phishing tactics, often utilizing malicious documents to install a custom Trojan backdoors named Elise and Emissary, indicating a likely state-sponsored affiliation due to the nature and persistence of their attacks.
+Lotus Blossom is a cybercriminal group identified as responsible for a persistent cyber espionage campaign targeting government and military organizations in Southeast Asia. This group employs spear phishing tactics, often utilizing malicious documents to install custom Trojan backdoors named Elise and Emissary, indicating a likely state-sponsored affiliation due to the nature and persistence of their attacks.
 
 ---
 ## Dropper 101
