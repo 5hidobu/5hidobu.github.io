@@ -38,8 +38,6 @@ Nowadays it is *a little bit* more complicated than the older days. Why? Because
 
 <p align=center><img src="https://github.com/user-attachments/assets/dce80ff1-c736-4aef-8502-7e48b72ae05e" /></p>
 
-Harry Potter and the Order of the PEB
-
 TL:DR 
 A malware cannot simply make a call to a function since it has no idea where it is in memory. It has to retrieve the address.
 
