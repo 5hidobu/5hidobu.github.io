@@ -62,7 +62,7 @@ When a new process is created in an operating system, several critical steps are
 	- `ProcessParameters`: A pointer to a structure containing command-line parameters and other settings relevant to the process;
 3. **Loading DLLs**: During its creation, the PEB also loads essential dynamic link libraries (DLLs), such as `Ntdll.dll` and `Kernel32.dll`, which provide fundamental services needed by user-mode applications.
 #### So, do you see the point?
-When the structure is created, there is information inside that is needed by the process to locate the structure that holds the information about the loaded modules. As described in @Zer0Phat's first blog post, he does the retrieve of the necessary information by making calls to functions such as `CreateToolhelp32Snapshot`, `Process32First` and `Process32Next` but you can achieve the same goal via `PEB`, *in a more juicy way*.
+When the structure is created, there is information inside that is needed by the process to locate the structure that holds the information about the loaded modules. As described in @zer0phat's first blog post, he retrieve needed information calling functions such as `CreateToolhelp32Snapshot`, `Process32First` and `Process32Next` but we now know that we can achieve the same goal via `PEB`, *in a more juicy way*.
 Ok, now we know what we want to find, we need to know the **how** and most importantly the **where**.
 
 ---
