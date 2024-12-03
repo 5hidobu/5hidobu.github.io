@@ -73,7 +73,7 @@ Ok, now we know what we want to find, we need to know the **how** and most impor
 
 Thanks to Raymond Chen, author of "The Old New Thing" bible.
 
-![image](https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8)
+<p align=left><img src="https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8" width="200" height="100" /></p>
 *Raymond GOAT Chen*
 
 Segment registers are special-purpose registers that help the CPU access memory efficiently by dividing it into different segments. Each segment can hold a specific type of data or code, which enhances the organization and management of memory. 
