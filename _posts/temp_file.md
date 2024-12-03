@@ -8,14 +8,13 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 
 # Injector 101
-Let's talk about malware, *yess*. But not a generic malware, an INJECTOR.
+Let's talk about malware, *yess*. But not a generic malware, an **Injector**.
 This is the second in a series of three posts related to a work teamed up with @zer0phat dedicated to a custom injector.
 Let's begin with a bit of theory about the type of malware developed and analyzed, so first of all, what is it an injector?
 
 > **TL:DR** Injector malware refers to a category of malicious software designed to insert harmful code into legitimate running processes to do dirty things on your computer.
 
 ![image](https://github.com/user-attachments/assets/b65e5829-ed2d-4a12-a66b-5a95b1f352af)
-*Injector developing - malicious code injection - malicious process injected active*
 
 Malware injectors are a specific subset of malware that focus on stealthy code injection into legitimate processes for various malicious purposes, contrasting with other types of malware that may operate differently or have distinct objectives. 
 ### Different technique to do injection:
@@ -51,8 +50,7 @@ Or rather, by walking through the `PEB`.
 #### first of all, what is it the PEB?
 The **Process Environment Block (PEB)** is contained in objects called EPROCESS structures in the Windows operating system, is a crucial data structure that holds important information about a running process. 
 
-<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1" width="450" height="450" /></p>
-*_EPROCESS struct* 
+<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1" width="650" height="660" /></p>
 
 It is primarily utilized by the operating system to manage process-related data and is essential for both system operations and security analysis.
 #### What happens when a process is created?
@@ -73,8 +71,7 @@ Ok, now we know what we want to find, we need to know the **how** and most impor
 
 Thanks to Raymond Chen, author of "The Old New Thing" bible.
 
-<p align=left><img src="https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8" width="300" height="300" /></p>
-*Raymond GOAT Chen*
+<p align=left><img src="https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8" width="450" height="490" /></p>
 
 Segment registers are special-purpose registers that help the CPU access memory efficiently by dividing it into different segments. Each segment can hold a specific type of data or code, which enhances the organization and management of memory. 
 
@@ -155,7 +152,6 @@ typedef struct _PEB_LDR_DATA {
 ```
 
 ![image](https://github.com/user-attachments/assets/77d34fcd-1121-4da1-9c3e-07e3964dc4d0)
-*PEB Walking - Parsing loaded modules - Right 0ffset founded!*
 
 > :bulb: **Tip:** Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
 
@@ -164,13 +160,11 @@ typedef struct _PEB_LDR_DATA {
 Let's feed our friendly red dragon with this new specimen.
 
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
-*Ghidrino.jpg*
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
 Let's split the instructions that we see in the code snippet below:
 
 ![image](https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893)
-*Point_to_the_PEB FUNction*
 
 1. **Initialization**: These instructions clear the registers RAX and RCX by performing an exclusive OR operation with themselves. This is a common way to set registers to zero.
 
@@ -194,12 +188,10 @@ After this, based on the below attached code snippet, skipping most of the instr
 To do so it use the `LEA` (Load Effective Address) instruction that calculates the address of the string `s_KERNELBASE.dll_180004000` and stores it in the `RDI` register. 
 
 ![image](https://github.com/user-attachments/assets/88ef9931-2a92-4412-8d47-b98219264b87)
-*LEA instruction*
 
 This suggests to us that this code may be dealing with Windows API functions in KERNELBASE.dll that it is a core Windows library that provides various system services. *Maybe it wants to call some of its function to perform injection? .. I think so ;)* 
 
 ![image](https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8)
-*right 0ffset reached - call to desired FUN - Inject and loot*
 
 The `FS`/`GS` segment register provides a powerful mechanism for accessing thread-specific data and process information in Windows environments. By utilizing specific offsets, malware developers can efficiently manage and retrieve critical information about both threads and processes.
 
