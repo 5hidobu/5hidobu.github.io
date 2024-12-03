@@ -35,7 +35,7 @@ The malware needs to collect information about the modules loaded in memory to s
 Nowadays it is *a little bit* more complicated than the older days. Why? Because the ASLR. 
 **Address Space Layout Randomization** (ASLR) is a security technique used in operating systems to randomize the memory addresses used by system and application processes. This is a security feature the MS implement after Win8 because core processes tended to be loaded into predictlable memory locatoin upon system startup, yes because prior to ASLR, the memory locations of files and applications were either known or easily determined and some exploit targetting memory location known to be assocaited with paticular processes. ASLR randomized the memory location used by system file and other programs making much harder, *but not impossible ;)* for an attacker to guess the right location of a needed process.
 
-![image](https://github.com/user-attachments/assets/dce80ff1-c736-4aef-8502-7e48b72ae05e)
+<p align=center><img src="https://github.com/user-attachments/assets/dce80ff1-c736-4aef-8502-7e48b72ae05e" /></p>
 Harry Potter and the Order of the PEB
 
 TL:DR 
@@ -105,11 +105,12 @@ PEB Walking - Parsing loaded modules - Right 0ffset founded!
 
 Here’s a simple example of how we might use inline assembly to access these structures:
 
-`#include <stdio.h> 
-`#include <Windows.h> 
+```cpp
+#include <stdio.h> 
+#include <Windows.h> 
 
-`int main() { 
-`	PVOID peb; 
+int main() { 
+	PVOID peb; 
 	
 	\_asm { 
 		mov eax, fs:[0x30]        // Get address of PEB 
@@ -118,7 +119,8 @@ Here’s a simple example of how we might use inline assembly to access these st
 	
 	printf("PEB Address: %p\n", peb); 
 	return 0; 
-`}
+}
+```
 
 In this example, `fs:[0x30]` retrieves the address of the `PEB`, which can then be used to access various fields within it. Once we have accessed the `PEB` using `FS:[0x30]`, we can further explore various fields within it, such as:
 
@@ -155,19 +157,19 @@ Point_to_the_PEB FUNction
 1. **Initialization**: These instructions clear the registers RAX and RCX by performing an exclusive OR operation with themselves. This is a common way to set registers to zero.
 
 `XOR RAX, RAX 
-`XOR RCX, RCX
+XOR RCX, RCX`
 
 2. **Retrieve PEB Address**: This instruction loads the address of the PEB into the RAX register. In a 64-bit Windows environment, the PEB address can be accessed using the GS segment register with a specific offset (typically 0x60 for 64-bit systems) that points to the PEB within the Thread Environment Block (TEB). (here we see GS - but as we see before, GS segment is the same that FS)
 
-`MOV RAX, qword ptr GS:[0x60]
+`MOV RAX, qword ptr GS:[0x60]`
 
 3. **Ldr data strc**: After obtaining the PEB address, this line accesses the `Ldr` field of the PEB structure by adding an offset of 0x18 to the PEB address. The `Ldr` field points to the PEB Loader Data structure, which contains information about loaded modules.
 
-`MOV RAX, qword ptr [RAX + 0x18]
+`MOV RAX, qword ptr [RAX + 0x18]`
 
 4. **InLoadOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InLoadOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
 
-`ADD RAX, 0x10
+`ADD RAX, 0x10`
 
 
 After this, based on the below attached code snippet, skipping most of the instructions we can see which module the code is try to reach. 
