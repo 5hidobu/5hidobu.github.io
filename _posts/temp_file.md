@@ -149,8 +149,13 @@ typedef struct _PEB {
 
 - `InMemoryOrderModuleList`: This linked list can be accessed to enumerate all modules loaded into the process.
 
-![image](https://github.com/user-attachments/assets/5a5afdf1-0d12-49bd-8588-2baa5d27c16b)
-*_PEB_LDR_DATA struct*
+```cpp
+typedef struct _PEB_LDR_DATA {
+  BYTE       Reserved1[8];
+  PVOID      Reserved2[3];
+  LIST_ENTRY InMemoryOrderModuleList;
+} PEB_LDR_DATA, *PPEB_LDR_DATA;
+```
 
 ---
 
