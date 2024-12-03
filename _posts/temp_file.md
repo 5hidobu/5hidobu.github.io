@@ -163,13 +163,13 @@ typedef struct _PEB_LDR_DATA {
 
 Let's feed our friendly red dragon with this new specimen.
 
-<p align=left><img src="https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5" /></p>
+![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
 *Ghidrino.jpg*
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
 Let's split the instructions that we see in the code snippet below:
 
-<p align=left><img src="https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893" /></p>
+![image](https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893)
 *Point_to_the_PEB FUNction*
 
 1. **Initialization**: These instructions clear the registers RAX and RCX by performing an exclusive OR operation with themselves. This is a common way to set registers to zero.
@@ -193,15 +193,12 @@ XOR RCX, RCX`
 After this, based on the below attached code snippet, skipping most of the instructions we can see which module the code is try to reach. 
 To do so it use the `LEA` (Load Effective Address) instruction that calculates the address of the string `s_KERNELBASE.dll_180004000` and stores it in the `RDI` register. 
 
-<p align=left><img src="https://github.com/user-attachments/assets/88ef9931-2a92-4412-8d47-b98219264b87" /></p>
+![image](https://github.com/user-attachments/assets/88ef9931-2a92-4412-8d47-b98219264b87)
 *LEA instruction*
 
 This suggests to us that this code may be dealing with Windows API functions in KERNELBASE.dll that it is a core Windows library that provides various system services. *Maybe it wants to call some of its function to perform injection? .. I think so ;)* 
 
 ![image](https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8)
-*right 0ffset reached - call to desired FUN - Inject and loot*
-
-<p align=left><img src="https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8"/></p>
 *right 0ffset reached - call to desired FUN - Inject and loot*
 
 The `FS`/`GS` segment register provides a powerful mechanism for accessing thread-specific data and process information in Windows environments. By utilizing specific offsets, malware developers can efficiently manage and retrieve critical information about both threads and processes.
