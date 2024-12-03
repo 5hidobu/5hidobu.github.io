@@ -61,6 +61,8 @@ When a new process is created in an operating system, several critical steps are
 	- `Ldr`: A pointer to a structure that holds information about loaded modules;
 	- `ProcessParameters`: A pointer to a structure containing command-line parameters and other settings relevant to the process;
 3. **Loading DLLs**: During its creation, the PEB also loads essential dynamic link libraries (DLLs), such as `Ntdll.dll` and `Kernel32.dll`, which provide fundamental services needed by user-mode applications.
+
+
 #### So, do you see the point?
 When the structure is created, there is information inside that is needed by the process to locate the structure that holds the information about the loaded modules. As described in @zer0phat's first blog post, he retrieve needed information calling functions such as `CreateToolhelp32Snapshot`, `Process32First` and `Process32Next` but we now know that we can achieve the same goal via `PEB`, *in a more juicy way*.
 Ok, now we know what we want to find, we need to know the **how** and most importantly the **where**.
@@ -85,7 +87,7 @@ To access memory relative to a specific segment register, you prefix the segment
 
 Indicated below some of the offsets using the segment `fs`: 
 1.  `FS:[0]` Points to the Current Structured Exception Handling (SEH) frame. This is used for managing exceptions in the current thread.
-   > :bulb: Malware also exploit this offset to do some powerfull misdirection technique as a self-defense approach to make it harder for analyst to understand the flow of the specimen's execution. Maybe I'll write something related to this technique in the future ;)
+   > Malware also exploit this offset to do some powerfull misdirection technique as a self-defense approach to make it harder for analyst to understand the flow of the specimen's execution. Maybe I'll write something related to this technique in the future ;)
 2. `FS:[18]` Contains the address of the TEB itself. This is crucial as it allows access to other thread-specific information.
 3. `FS:[20]` Holds the Process ID (PID) of the current thread's process. This is useful for identifying which process is currently executing.
 4. `FS:[24]` Contains the Thread ID (TID) of the current thread, allowing for thread-specific operations.
@@ -154,7 +156,7 @@ typedef struct _PEB_LDR_DATA {
 
 ![image](https://github.com/user-attachments/assets/77d34fcd-1121-4da1-9c3e-07e3964dc4d0)
 
-> :bulb: Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
+> Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
 
 # Static analysis of the walk
 
