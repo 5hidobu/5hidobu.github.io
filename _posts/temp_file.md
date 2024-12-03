@@ -38,10 +38,10 @@ Nowadays it is *a little bit* more complicated than the older days. Why? Because
 
 <p align=center><img src="https://github.com/user-attachments/assets/dce80ff1-c736-4aef-8502-7e48b72ae05e" /></p>
 
-TL:DR 
+TL:DR : 	
 A malware cannot simply make a call to a function since it has no idea where it is in memory. It has to retrieve the address.
 
-Not-so TL:DR 
+Not-so TL:DR :		
 To interact with its runtime environment, malware must execute various API calls. Some of these functions may already be loaded into the memory of the compromised application, while others might reside in DLLs that the malware needs to load itself. To achieve this, malwares typically uses the `LoadLibrary` function to load a DLL, and then it calls `GetProcAddress` to find the specific function within that DLL. Both `LoadLibrary` and `GetProcAddress` are located in `kernel32.dll`, which is usually pre-loaded in the memory space of the exploited application. Consequently, malware often inspects the application's memory to locate `kernel32.dll`, enabling it to examine its export table for essential functions like `LoadLibrary` and `GetProcAddress`.
 Malware must then compute the address in memory, in the past these addresses were hardcoded, then Windows implemented ASLR as a security countermeasure, *but as we all know, the countermeasure to the countermeasure is around the corner*. As we saw in the 1st episode on the @zer0phat blog post (https://t.co/SooOEnOlZC) one technique might be to snapshot the process and parse the modules loaded into memory to do the retrieve of the information needed to proceed with the technique, using first `CreateToolhelp32Snapshot` and then the `Process32First` and `Process32Next` functions, respectively, to enumerate the processes. 
 There is an even more juicy and stealthy way to do this, by parsing the `PEB`. 
