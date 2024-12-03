@@ -12,7 +12,7 @@ Let's talk about malware, *yess*. But not a generic malware, an INJECTOR.
 This is the second in a series of three posts related to a work teamed up with @zer0phat dedicated to a custom injector.
 Let's begin with a bit of theory about the type of malware developed and analyzed, so first of all, what is it an injector?
 
-> TL:DR **Injector malware** refers to a category of malicious software designed to insert harmful code into legitimate running processes to do dirty things on your computer.
+> **TL:DR** Injector malware refers to a category of malicious software designed to insert harmful code into legitimate running processes to do dirty things on your computer.
 
  ![image](https://github.com/user-attachments/assets/b65e5829-ed2d-4a12-a66b-5a95b1f352af)
  
@@ -37,8 +37,7 @@ Nowadays it is *a little bit* more complicated than the older days. Why? Because
 
 <p align=center><img src="https://github.com/user-attachments/assets/dce80ff1-c736-4aef-8502-7e48b72ae05e" /></p>
 
-TL:DR : 	
-A malware cannot simply make a call to a function since it has no idea where it is in memory. It has to retrieve the address.
+> **TL:DR** A malware cannot simply make a call to a function since it has no idea where it is in memory. It has to retrieve the address.
 
 Not-so TL:DR :		
 To interact with its runtime environment, malware must execute various API calls. Some of these functions may already be loaded into the memory of the compromised application, while others might reside in DLLs that the malware needs to load itself. To achieve this, malwares typically uses the `LoadLibrary` function to load a DLL, and then it calls `GetProcAddress` to find the specific function within that DLL. Both `LoadLibrary` and `GetProcAddress` are located in `kernel32.dll`, which is usually pre-loaded in the memory space of the exploited application. Consequently, malware often inspects the application's memory to locate `kernel32.dll`, enabling it to examine its export table for essential functions like `LoadLibrary` and `GetProcAddress`.
