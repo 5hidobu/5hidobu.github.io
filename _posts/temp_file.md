@@ -157,8 +157,7 @@ typedef struct _PEB_LDR_DATA {
 } PEB_LDR_DATA, *PPEB_LDR_DATA;
 ```
 
-> Out of Scope: Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
-
+> :bulb: **Tip:** Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
 
 # Static analysis of the walk
 
@@ -199,7 +198,10 @@ To do so it use the `LEA` (Load Effective Address) instruction that calculates 
 
 This suggests to us that this code may be dealing with Windows API functions in KERNELBASE.dll that it is a core Windows library that provides various system services. *Maybe it wants to call some of its function to perform injection? .. I think so ;)* 
 
-<p align=left><img src="https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8" /></p>
+![image]("https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8")
+*right 0ffset reached - call to desired FUN - Inject and loot*
+
+<p align=left><img src="https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8"/></p>
 *right 0ffset reached - call to desired FUN - Inject and loot*
 
 The `FS`/`GS` segment register provides a powerful mechanism for accessing thread-specific data and process information in Windows environments. By utilizing specific offsets, malware developers can efficiently manage and retrieve critical information about both threads and processes.
