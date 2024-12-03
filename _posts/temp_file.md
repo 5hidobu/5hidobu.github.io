@@ -19,8 +19,6 @@ Let's begin with a bit of theory about the type of malware developed and analyze
          alt="Injector developing">
     <figcaption>Injector developing - malicious code injection - malicious process injected active</figcaption>
 </figure>
- 
-Injector developing - malicious code injection - malicious process injected active
 
 Malware injectors are a specific subset of malware that focus on stealthy code injection into legitimate processes for various malicious purposes, contrasting with other types of malware that may operate differently or have distinct objectives. 
 ### Different technique to do injection:
