@@ -84,7 +84,8 @@ To access memory relative to a specific segment register, you prefix the segment
  `MOV     eax, fs:[0]        ; eax = memory at offset 0 in segment fs`
 
 Indicated below some of the offsets using the segment `fs`: 
-1.  `FS:[0]` Points to the Current Structured Exception Handling (SEH) frame. This is used for managing exceptions in the current thread. *Malware also exploit this offset to do some powerfull misdirection technique as a self-defense approach to make it harder for analyst to understand the flow of the specimen's execution. Maybe I'll write something related to this technique in the future ;)*
+1.  `FS:[0]` Points to the Current Structured Exception Handling (SEH) frame. This is used for managing exceptions in the current thread.
+   > :bulb: Malware also exploit this offset to do some powerfull misdirection technique as a self-defense approach to make it harder for analyst to understand the flow of the specimen's execution. Maybe I'll write something related to this technique in the future ;)
 2. `FS:[18]` Contains the address of the TEB itself. This is crucial as it allows access to other thread-specific information.
 3. `FS:[20]` Holds the Process ID (PID) of the current thread's process. This is useful for identifying which process is currently executing.
 4. `FS:[24]` Contains the Thread ID (TID) of the current thread, allowing for thread-specific operations.
@@ -153,7 +154,7 @@ typedef struct _PEB_LDR_DATA {
 
 ![image](https://github.com/user-attachments/assets/77d34fcd-1121-4da1-9c3e-07e3964dc4d0)
 
-> :bulb: **Tip:** Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
+> :bulb: Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
 
 # Static analysis of the walk
 
