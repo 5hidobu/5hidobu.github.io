@@ -50,7 +50,7 @@ Or rather, by walking through the `PEB`.
 #### first of all, what is it the PEB?
 The **Process Environment Block (PEB)** is contained in objects called EPROCESS structures in the Windows operating system, is a crucial data structure that holds important information about a running process. 
 
-<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1" width="650" height="660" /></p>
+<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1" width="670" height="660" /></p>
 
 It is primarily utilized by the operating system to manage process-related data and is essential for both system operations and security analysis.
 #### What happens when a process is created?
