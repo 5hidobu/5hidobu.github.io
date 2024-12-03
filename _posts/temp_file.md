@@ -52,8 +52,7 @@ Or rather, by walking through the `PEB`.
 The **Process Environment Block (PEB)** is contained in objects called EPROCESS structures in the Windows operating system, is a crucial data structure that holds important information about a running process. 
 
 ![image](https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1)
-
-_EPROCESS struct 
+*_EPROCESS struct* 
 
 It is primarily utilized by the operating system to manage process-related data and is essential for both system operations and security analysis.
 #### What happens when a process is created?
@@ -75,8 +74,7 @@ Ok, now we know what we want to find, we need to know the **how** and most impor
 Thanks to Raymond Chen, author of "The Old New Thing" bible.
 
 ![image](https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8)
-
-Raymond GOAT Chen
+*Raymond GOAT Chen*
 
 Segment registers are special-purpose registers that help the CPU access memory efficiently by dividing it into different segments. Each segment can hold a specific type of data or code, which enhances the organization and management of memory. 
 
@@ -100,8 +98,7 @@ Indicated below some of the offsets using the segment `fs`:
 # HOW: with a couple of lowest level code instructions!
 
 ![image](https://github.com/user-attachments/assets/77d34fcd-1121-4da1-9c3e-07e3964dc4d0)
-
-PEB Walking - Parsing loaded modules - Right 0ffset founded!
+*PEB Walking - Parsing loaded modules - Right 0ffset founded!*
 
 Here’s a simple example of how we might use inline assembly to access these structures:
 
@@ -127,14 +124,12 @@ In this example, `fs:[0x30]` retrieves the address of the `PEB`, which can then 
 - `PEB_LDR_DATA` Structure: At offset `0x0C` in the PEB, this structure contains information about loaded modules.
 
 ![image](https://github.com/user-attachments/assets/e02011f1-e67e-46b7-bf1c-034c3c90bfc7)
-
-_PEB struct
+*_PEB struct*
 
 - `InMemoryOrderModuleList`: This linked list can be accessed to enumerate all modules loaded into the process.
 
 ![image](https://github.com/user-attachments/assets/5a5afdf1-0d12-49bd-8588-2baa5d27c16b)
-
-_PEB_LDR_DATA struct
+*_PEB_LDR_DATA struct*
 
 ---
 
@@ -148,15 +143,13 @@ Another interesting PEB_struct data that malware try to retrieve is also the `Be
 Let's feed our friendly red dragon with this new specimen.
 
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
-
-Ghidrino.jpg
+*Ghidrino.jpg*
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
 Let's split the instructions that we see in the code snippet below:
 
 ![image](https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893)
-
-Point_to_the_PEB FUNction
+*Point_to_the_PEB FUNction*
 
 1. **Initialization**: These instructions clear the registers RAX and RCX by performing an exclusive OR operation with themselves. This is a common way to set registers to zero.
 
@@ -180,14 +173,12 @@ After this, based on the below attached code snippet, skipping most of the instr
 To do so it use the `LEA` (Load Effective Address) instruction that calculates the address of the string `s_KERNELBASE.dll_180004000` and stores it in the `RDI` register. 
 
 ![image](https://github.com/user-attachments/assets/88ef9931-2a92-4412-8d47-b98219264b87)
-
-LEA instruction
+*LEA instruction*
 
 This suggests to us that this code may be dealing with Windows API functions in KERNELBASE.dll that it is a core Windows library that provides various system services. *Maybe it wants to call some of its function to perform injection? .. I think so ;)* 
 
 ![image](https://github.com/user-attachments/assets/a68dec67-f391-4b2d-99f6-a567d5e6a6f8)
-
-right 0ffset reached - call to desired FUN - Inject and loot
+*right 0ffset reached - call to desired FUN - Inject and loot*
 
 The `FS`/`GS` segment register provides a powerful mechanism for accessing thread-specific data and process information in Windows environments. By utilizing specific offsets, malware developers can efficiently manage and retrieve critical information about both threads and processes.
 
