@@ -21,7 +21,7 @@ Malware injectors are a specific subset of malware that focus on stealthy code 
 Listed below some of the most common and known techniques to perform injection:
 1. **PE/Code Injection**: This technique allows attackers to execute PE/arbitrary code by injecting it into a running application.
 2. **DLL Injection**: This technique involves inserting a dynamic-link library (DLL) into the address space of another process. Once injected, the DLL can execute code within the context of that process.
-3. **Process Hollowing**: This method creates a new process in a suspended state and replaces its memory with malicious code. The legitimate process is then resumed, executing the injected code while appearing normal to the operating system. (one of my fav!)
+3. **Process Hollowing**: This method creates a new process in a suspended state and replaces its memory with malicious code. The legitimate process is then resumed, executing the injected code while appearing normal to the operating system. 
 4. **Reflective DLL Injection**: A more advanced form of DLL injection where the DLL is loaded directly from memory rather than from disk, making it harder to detect.
 
 There are other techniques, maybe also too stealthy and powerfull, but its not the post to talk about that, and internet is full of info related to. This blog post is intended as an in-depth look at the technique by which the malware retrieves the information needed to load modules already loaded into memory. *Let's start.*
