@@ -8,7 +8,7 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 
 # Injector 101
-Let's talk about malware, *yess*. But not a generic malware, an <font color="red">Injector!</font>.
+Let's talk about malware, *yess*. But not a generic malware, an <font color="red">Injector!</font> .
 This is the second in a series of three posts related to a work teamed up with @zer0phat dedicated to a custom injector.
 Let's begin with a bit of theory about the type of malware developed and analyzed, so first of all, what is it an injector?
 
