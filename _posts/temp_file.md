@@ -51,7 +51,7 @@ Or rather, by walking through the `PEB`.
 #### first of all, what is it the PEB?
 The **Process Environment Block (PEB)** is contained in objects called EPROCESS structures in the Windows operating system, is a crucial data structure that holds important information about a running process. 
 
-![image](https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1)
+<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1" width="450" height="450" /></p>
 *_EPROCESS struct* 
 
 It is primarily utilized by the operating system to manage process-related data and is essential for both system operations and security analysis.
@@ -73,7 +73,7 @@ Ok, now we know what we want to find, we need to know the **how** and most impor
 
 Thanks to Raymond Chen, author of "The Old New Thing" bible.
 
-<p align=left><img src="https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8" width="200" height="300" /></p>
+<p align=left><img src="https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8" width="300" height="300" /></p>
 *Raymond GOAT Chen*
 
 Segment registers are special-purpose registers that help the CPU access memory efficiently by dividing it into different segments. Each segment can hold a specific type of data or code, which enhances the organization and management of memory. 
@@ -157,12 +157,8 @@ typedef struct _PEB_LDR_DATA {
 } PEB_LDR_DATA, *PPEB_LDR_DATA;
 ```
 
----
+> Out of Scope: Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
 
-##### Out of Scope: 
-Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
-
----
 
 # Static analysis of the walk
 
