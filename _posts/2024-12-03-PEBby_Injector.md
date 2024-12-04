@@ -101,8 +101,7 @@ Indicated below some of the offsets using the segment `fs`:
 4. `FS:[24]` Contains the Thread ID (TID) of the current thread, allowing for thread-specific operations.
 5. `FS:[30]` **This offset points to the PEB.** The PEB contains vital information about the process, such as loaded modules and process parameters. *And now we have the "where"!*
 
-
-![image](https://github.com/user-attachments/assets/328d18ba-8238-4f03-a8b1-415fad462977)
+<p align=center><img src="https://github.com/user-attachments/assets/d9bf4c12-427a-4df5-a4b6-dba0b2e70792" /></p>
 
 From Cucci's "Evasive Malware" masterpiece, a table that represent corresponding x86/x64 offsets.
 
