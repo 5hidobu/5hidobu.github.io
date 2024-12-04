@@ -39,7 +39,7 @@ Nowadays it is *a little bit* more complicated than the older days. Why? Because
 
 Not-so TL:DR :		
 To interact with its runtime environment, malware must execute various API calls. Some of these functions may already be loaded into the memory of the compromised application, while others might reside in DLLs that the malware needs to load itself. To achieve this, malwares typically uses the `LoadLibrary` function to load a DLL, and then it calls `GetProcAddress` to find the specific function within that DLL. Both `LoadLibrary` and `GetProcAddress` are located in `kernel32.dll`, which is usually pre-loaded in the memory space of the exploited application. Consequently, malware often inspects the application's memory to locate `kernel32.dll`, enabling it to examine its export table for essential functions like `LoadLibrary` and `GetProcAddress`.
-Malware must then compute the address in memory, in the past these addresses were hardcoded, then Windows implemented ASLR as a security countermeasure, *but as we all know, the countermeasure to the countermeasure is around the corner*. As we saw in the 1st episode on the @zer0phat blog post (https://t.co/SooOEnOlZC) one technique might be to snapshot the process and parse the modules loaded into memory to do the retrieve of the information needed to proceed with the technique, using first `CreateToolhelp32Snapshot` and then the `Process32First` and `Process32Next` functions, respectively, to enumerate the processes. 
+Malware must then compute the address in memory, in the past these addresses were hardcoded, then Windows implemented ASLR as a security countermeasure, *but as we all know, the countermeasure to the countermeasure is around the corner*. As we saw in the 1st episode on the @zer0phat blog [post](https://t.co/SooOEnOlZC) one technique might be to snapshot the process and parse the modules loaded into memory to do the retrieve of the information needed to proceed with the technique, using first `CreateToolhelp32Snapshot` and then the `Process32First` and `Process32Next` functions, respectively, to enumerate the processes. 
 There is an even more juicy and stealthy way to do this, by parsing the `PEB`. 
 Or rather, by walking through the `PEB`.
 
@@ -50,7 +50,7 @@ Or rather, by walking through the `PEB`.
 #### first of all, what is it the PEB?
 The **Process Environment Block (PEB)** is contained in objects called EPROCESS structures in the Windows operating system, is a crucial data structure that holds important information about a running process. 
 
-<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1" width="670" height="660" /></p>
+<p align=left><img src="https://github.com/user-attachments/assets/b527c99b-9dae-4dc3-b8e7-b5c674d8dbd1"/></p>
 
 It is primarily utilized by the operating system to manage process-related data and is essential for both system operations and security analysis.
 #### What happens when a process is created?
@@ -76,6 +76,15 @@ Thanks to Raymond Chen, author of "The Old New Thing" bible.
 <p align=left><img src="https://github.com/user-attachments/assets/ebe93ed0-d307-459c-843a-3c573d4dabb8" width="450" height="490" /></p>
 
 Segment registers are special-purpose registers that help the CPU access memory efficiently by dividing it into different segments. Each segment can hold a specific type of data or code, which enhances the organization and management of memory. 
+
+|Segment   |Mnemonic   |  
+|---|---|
+|ss   |stack segment   |  
+|cs   |code segment   |  
+|ds   |data segment   |   
+|es   |extra segment   |  
+|fs   |   |  
+|gs   |   |   
 
 ![image](https://github.com/user-attachments/assets/dae94439-be9f-4bb8-a9ca-312b74b4ece6)
 
@@ -165,6 +174,7 @@ Let's feed our friendly red dragon with this new specimen.
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
+> is a x64 sample, so segment and offset are a different from what we learn in the previous chapters. Can you   
 Let's split the instructions that we see in the code snippet below:
 
 ![image](https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893)
