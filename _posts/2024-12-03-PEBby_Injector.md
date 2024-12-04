@@ -189,25 +189,25 @@ Let's split the instructions that we see in the code snippet below:
 
 ![image](https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893)
 
-1. **Initialization**: These instructions clear the registers RAX and RCX by performing an exclusive OR operation with themselves. This is a common way to set registers to zero.
+1- **Initialization**: These instructions clear the registers RAX and RCX by performing an exclusive OR operation with themselves. This is a common way to set registers to zero.
 
 `XOR RAX, RAX 
 XOR RCX, RCX`
 
-2. **Retrieve PEB Address**: This instruction loads the address of the PEB into the RAX register. In a 64-bit Windows environment, the PEB address can be accessed using the GS segment register with a specific offset (typically 0x60 for 64-bit systems) that points to the PEB within the Thread Environment Block (TEB). (here we see GS - but as we see before, GS segment is the same that FS)
+2- **Retrieve PEB Address**: This instruction loads the address of the PEB into the RAX register. In a 64-bit Windows environment, the PEB address can be accessed using the GS segment register with a specific offset, typically 0x60 for 64-bit systems, that points to the PEB within the Thread Environment Block (TEB). 
 
 `MOV RAX, qword ptr GS:[0x60]`
 
-3. **Ldr data strc**: After obtaining the PEB address, this line accesses the `Ldr` field of the PEB structure by adding an offset of 0x18 to the PEB address. The `Ldr` field points to the PEB Loader Data structure, which contains information about loaded modules.
+3- **Ldr data strc**: After obtaining the PEB address, this line accesses the `Ldr` field of the PEB structure by adding an offset of 0x18 to the PEB address. The `Ldr` field points to the PEB Loader Data structure, which contains information about loaded modules.
 
 `MOV RAX, qword ptr [RAX + 0x18]`
 
-4. **InLoadOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InLoadOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
+4- **InLoadOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InLoadOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
 
 `ADD RAX, 0x10`
 
 
-After this, based on the below attached code snippet, skipping most of the instructions we can see which module the code is try to reach. 
+After this, based on the below attached code snippet, skipping most of the instructions, we can see which module the code is try to reach. 
 To do so it use the `LEA` (Load Effective Address) instruction that calculates the address of the string `s_KERNELBASE.dll_180004000` and stores it in the `RDI` register. 
 
 ![image](https://github.com/user-attachments/assets/88ef9931-2a92-4412-8d47-b98219264b87)
