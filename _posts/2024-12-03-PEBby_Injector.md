@@ -68,6 +68,11 @@ When a new process is created in an operating system, several critical steps are
 
 From "the Art of Memory Forensics", representation of how PEB points to the modules loaded in memory.
 
+![image](https://github.com/user-attachments/assets/eb1fb1ce-cba8-4d2b-be42-067c7a0d70a0)
+
+Simply attaching a process to a debugger and using "!peb" command we can show all the information in it. We can spot `Ldr` structure where there are loaded modules.
+
+
 #### So, do you see the point?
 When the structure is created, there is information inside that is needed by the process to locate the structure that holds the information about the loaded modules. As described in @zer0phat's first blog post, he retrieve needed information calling functions such as `CreateToolhelp32Snapshot`, `Process32First` and `Process32Next` but we now know that we can achieve the same goal via `PEB`, *in a more juicy way*.
 Ok, now we know what we want to find, we need to know the **how** and most importantly the **where**.
@@ -156,13 +161,13 @@ typedef struct _PEB {
 } PEB, *PPEB;
 ```
 
-- `InMemoryOrderModuleList`: This linked list can be accessed to enumerate all modules loaded into the process.
+- `InLoadOrderModuleList`: This linked list can be accessed to enumerate all modules loaded into the process.
 
 ```cpp
 typedef struct _PEB_LDR_DATA {
   BYTE       Reserved1[8];
   PVOID      Reserved2[3];
-  LIST_ENTRY InMemoryOrderModuleList;
+  LIST_ENTRY InLoadOrderModuleList;
 } PEB_LDR_DATA, *PPEB_LDR_DATA;
 ```
 
@@ -197,7 +202,7 @@ XOR RCX, RCX`
 
 `MOV RAX, qword ptr [RAX + 0x18]`
 
-4. **InMemoryOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InMemoryOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
+4. **InLoadOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InLoadOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
 
 `ADD RAX, 0x10`
 
