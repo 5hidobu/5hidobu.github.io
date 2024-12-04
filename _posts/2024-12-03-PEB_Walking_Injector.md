@@ -86,8 +86,6 @@ Segment registers are special-purpose registers that help the CPU access memory 
 |fs   |   |  
 |gs   |   |   
 
-![image](https://github.com/user-attachments/assets/dae94439-be9f-4bb8-a9ca-312b74b4ece6)
-
 The first four segments have architectural meaning, but without specifying every purpose of each segment registers, the are two bonus segment registers that aren’t architecturally significant, and we can use them for anything, the ones we are interested in are `fs` and `gs`. 
 Windows uses the `fs` segment register to access a small block of memory that is associated with each thread, known as the Thread Environment Block, or `TEB`.
 To access memory relative to a specific segment register, you prefix the segment register and a colon to the memory reference.
