@@ -1,10 +1,12 @@
 ---
 layout: post
-title: PEB-Walking Injector
+title: PEBby Injector
 subtitle: How malware can retrieve base address of loaded modules in order to resolve specific functions.
 ---
 
 >
+
+![image](https://github.com/user-attachments/assets/3778f933-8605-4b0d-9b84-10c2c309689d)
 
 
 # Injector 101
