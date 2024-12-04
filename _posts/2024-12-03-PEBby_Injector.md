@@ -173,7 +173,7 @@ typedef struct _PEB_LDR_DATA {
 
 ![image](https://github.com/user-attachments/assets/77d34fcd-1121-4da1-9c3e-07e3964dc4d0)
 
-> Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen. (spot it in WinDbg image right above!)
+> Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "Yes" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a not-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen. (spot it in WinDbg image right above!)
 
 # Static analysis of the walk
 
@@ -182,7 +182,7 @@ Let's feed our friendly red dragon with this new specimen.
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
-> is a x64 sample, so segment and offset are different from what we learn in the previous chapters (see Cucci's table).
+> It is a x64 sample, so segment and offset are different from what we learn in the previous chapters (see Cucci's table).
 > e.g. `fs:[0x30]` became `gs:[0x60]` and `EAX` register is `RAX`
 
 Let's split the instructions that we see in the code snippet below:
