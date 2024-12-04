@@ -68,7 +68,7 @@ When a new process is created in an operating system, several critical steps are
 
 From "the Art of Memory Forensics", representation of how PEB points to the modules loaded in memory.
 
-![image](https://github.com/user-attachments/assets/eb1fb1ce-cba8-4d2b-be42-067c7a0d70a0)
+![image](https://github.com/user-attachments/assets/84b59f3b-e88c-4610-afab-094981b8f6c9)
 
 Simply attaching a process to a debugger and using "!peb" command we can show all the information in it. We can spot `Ldr` structure where there are loaded modules.
 
@@ -173,7 +173,7 @@ typedef struct _PEB_LDR_DATA {
 
 ![image](https://github.com/user-attachments/assets/77d34fcd-1121-4da1-9c3e-07e3964dc4d0)
 
-> Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen.  
+> Another interesting PEB_struct data that malware try to retrieve is also the `BeingDebugged` value, aimed to act as a countermeasure, if it set to "True" resulting that the process (the malware) is actually debugged, killing itself or misdirect execution flow to something that a non-skilled analyst or a not so controlled environment can intercept as suspicious and proceed to don't analyze further the specimen. (spot it in WinDbg image right above!)
 
 # Static analysis of the walk
 
