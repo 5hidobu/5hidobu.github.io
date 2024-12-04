@@ -9,7 +9,7 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 # Injector 101
 Let's talk about malware, *yess*. But not a generic malware, an Injector!
-This is the second in a series of three posts related to a work teamed up with @zer0phat dedicated to an handmade injector.
+This is the second in a series of three posts related to a work teamed up with @zer0phat [@zer0phat](https://x.com/zer0phat) dedicated to an handmade injector.
 Let's begin with a bit of theory about the type of malware developed and analyzed, so first of all, what is it an injector?
 
 > **TL:DR** Injector malware refers to a category of malicious software designed to insert harmful code into legitimate running processes to do malicious things on infected host.
@@ -166,7 +166,8 @@ Let's feed our friendly red dragon with this new specimen.
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
-> is a x64 sample, so segment and offset are a different from what we learn in the previous chapters. e.g. fs:[0x30] became gs:[0x60]
+> is a x64 sample, so segment and offset are a different from what we learn in the previous chapters.
+> e.g. `fs:[0x30]` became `gs:[0x60]` and `EAX` register is `RAX`
 
 Let's split the instructions that we see in the code snippet below:
 
