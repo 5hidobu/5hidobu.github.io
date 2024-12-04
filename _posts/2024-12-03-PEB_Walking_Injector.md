@@ -77,14 +77,8 @@ Thanks to Raymond Chen, author of "The Old New Thing" bible.
 
 Segment registers are special-purpose registers that help the CPU access memory efficiently by dividing it into different segments. Each segment can hold a specific type of data or code, which enhances the organization and management of memory. 
 
-|Segment   |Mnemonic   |  
-|---|---|
-|ss   |stack segment   |  
-|cs   |code segment   |  
-|ds   |data segment   |   
-|es   |extra segment   |  
-|fs   |   |  
-|gs   |   |   
+![image](https://github.com/user-attachments/assets/fad332cf-b1bb-48a7-aa43-707ee6f3d04d)
+
 
 The first four segments have architectural meaning, but without specifying every purpose of each segment registers, the are two bonus segment registers that aren’t architecturally significant, and we can use them for anything, the ones we are interested in are `fs` and `gs`. 
 Windows uses the `fs` segment register to access a small block of memory that is associated with each thread, known as the Thread Environment Block, or `TEB`.
@@ -172,7 +166,8 @@ Let's feed our friendly red dragon with this new specimen.
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
-> is a x64 sample, so segment and offset are a different from what we learn in the previous chapters. Can you   
+> is a x64 sample, so segment and offset are a different from what we learn in the previous chapters. e.g. fs:[0x30] became gs:[0x60]
+
 Let's split the instructions that we see in the code snippet below:
 
 ![image](https://github.com/user-attachments/assets/788f132d-0f16-4c3a-b46a-123c1e929893)
