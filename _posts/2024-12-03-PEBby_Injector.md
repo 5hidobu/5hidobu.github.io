@@ -64,10 +64,15 @@ When a new process is created in an operating system, several critical steps are
 	- `ProcessParameters`: A pointer to a structure containing command-line parameters and other settings relevant to the process;
 3. **Loading DLLs**: During its creation, the PEB also loads essential dynamic link libraries (DLLs), such as `Ntdll.dll` and `Kernel32.dll`, which provide fundamental services needed by user-mode applications.
 
+![image](https://github.com/user-attachments/assets/e4fd4127-a7a6-4df7-a9b2-99784b8b1c30)
+
+From "the Art of Memory Forensics", representation of how PEB points to the modules loaded in memory.
 
 #### So, do you see the point?
 When the structure is created, there is information inside that is needed by the process to locate the structure that holds the information about the loaded modules. As described in @zer0phat's first blog post, he retrieve needed information calling functions such as `CreateToolhelp32Snapshot`, `Process32First` and `Process32Next` but we now know that we can achieve the same goal via `PEB`, *in a more juicy way*.
 Ok, now we know what we want to find, we need to know the **how** and most importantly the **where**.
+
+
 
 ---
 
@@ -95,6 +100,11 @@ Indicated below some of the offsets using the segment `fs`:
 3. `FS:[20]` Holds the Process ID (PID) of the current thread's process. This is useful for identifying which process is currently executing.
 4. `FS:[24]` Contains the Thread ID (TID) of the current thread, allowing for thread-specific operations.
 5. `FS:[30]` **This offset points to the PEB.** The PEB contains vital information about the process, such as loaded modules and process parameters. *And now we have the "where"!*
+
+
+![image](https://github.com/user-attachments/assets/328d18ba-8238-4f03-a8b1-415fad462977)
+
+From Cucci's "Evasive Malware" masterpiece, a table that represent corresponding x86/x64 offsets.
 
 ---
 
@@ -168,7 +178,7 @@ Let's feed our friendly red dragon with this new specimen.
 ![image](https://github.com/user-attachments/assets/da4c8faa-8b29-4659-8c63-48819f6252a5)
 
 Focusing on what we want to see related to the PEB, we must highlight this FUNction.
-> is a x64 sample, so segment and offset are different from what we learn in the previous chapters.
+> is a x64 sample, so segment and offset are different from what we learn in the previous chapters (see Cucci's table).
 > e.g. `fs:[0x30]` became `gs:[0x60]` and `EAX` register is `RAX`
 
 Let's split the instructions that we see in the code snippet below:
@@ -188,7 +198,7 @@ XOR RCX, RCX`
 
 `MOV RAX, qword ptr [RAX + 0x18]`
 
-4. **InLoadOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InLoadOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
+4. **InMemoryOrderModuleList**: This instruction adds 0x10 to RAX, which now points to the `InMemoryOrderModuleList` within the PEB Loader Data structure. This linked list contains information about all loaded modules in the process.
 
 `ADD RAX, 0x10`
 
