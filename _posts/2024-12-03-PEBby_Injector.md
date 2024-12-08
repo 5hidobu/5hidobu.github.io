@@ -6,7 +6,7 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 >
 
-![image](https://github.com/user-attachments/assets/c42666fc-eafa-4a65-b851-92c7d6e49f23)
+![image](https://github.com/user-attachments/assets/142c3348-734f-432d-a0fb-549b723548fd)
 
 
 # Injector 101
