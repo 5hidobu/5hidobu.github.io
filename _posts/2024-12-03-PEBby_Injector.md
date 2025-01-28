@@ -8,6 +8,7 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 ![image](https://github.com/user-attachments/assets/142c3348-734f-432d-a0fb-549b723548fd)
 
+> **TL:DR** Are you too lazy to read the blogpost? At the bottom of the page you will find a podcast-like to listen to!
 
 # Injector 101
 Let's talk about malware, *yess*. But not a generic malware, an Injector!
@@ -222,8 +223,8 @@ Accessing the PEB directly through assembly is often used in low-level programmi
 
 In the context of malware, accessing the `PEB_LDR_DATA` structure enables the extraction of base addresses for loaded modules, which can be used to resolve specific functions within those modules, even in the presence of security features like ASLR.
 
-# AI-Podcast
-### podcast related to this blogpost generated for fun with AI
+# AI-Podcast - hear me out!
+### generated for fun with AI
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2020203861&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/5hidobu" title="5hidobu" target="_blank" style="color: #cccccc; text-decoration: none;">5hidobu</a> · <a href="https://soundcloud.com/5hidobu/pebby-injector" title="PEBby Injector" target="_blank" style="color: #cccccc; text-decoration: none;">PEBby Injector</a></div>
 
 
