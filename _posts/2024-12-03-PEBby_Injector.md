@@ -10,6 +10,8 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 > **TL:DR** Are you too lazy to read the blogpost? At the bottom of the page you will find a podcast-like to listen to!
 
+---
+
 # Injector 101
 Let's talk about malware, *yess*. But not a generic malware, an Injector!
 This is the second in a series of three posts related to a work teamed up with [@zer0phat](https://x.com/zer0phat) dedicated to an handmade injector.
