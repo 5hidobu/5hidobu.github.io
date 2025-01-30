@@ -8,7 +8,7 @@ subtitle: How malware can retrieve base address of loaded modules in order to re
 
 ![image](https://github.com/user-attachments/assets/142c3348-734f-432d-a0fb-549b723548fd)
 
-> **TL:DR** Are you too lazy to read the blogpost? At the bottom of the page you will find a podcast-like to listen to!
+> **TL:DR** Are you too lazy to read the blogpost? At the bottom of the page you will find a podcast-like to listen to! but watch cause it's not so accurate and does not follow everything in the post.
 
 ---
 
