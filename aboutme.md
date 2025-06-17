@@ -7,5 +7,10 @@ I'm Francesco Facoetti, **5hid**obu
 Cyber Security and Malware Analysis enthusiast. 
 This blog is designed to collect Cyber Security posts related on topics that I find interesting and useful to 5hare.
 
+Quoting an inspiration and aspiration of mine, “I believe it is the duty of every IT professional to give back to the community.” 
+I hope this blog can contribute and motivate "neverending wanna-be better" infosec community.
+
+youvsyou
+
 
 
