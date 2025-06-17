@@ -10,7 +10,3 @@ This blog is designed to collect Cyber Security posts related on topics that I f
 Quoting an inspiration and aspiration of mine, “I believe it is the duty of every IT professional to give back to the community.” 
 I hope this blog can contribute and motivate "neverending wanna-be better" infosec community.
 
-youvsyou
-
-
-
