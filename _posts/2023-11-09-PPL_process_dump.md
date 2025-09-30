@@ -112,7 +112,7 @@ This tool was also observed to be used by **BlackCat** Ransomware Group during t
 
 ### UPDATE 09/2025
 
-![image](https://github.com/user-attachments/assets/5a837699-cbbd-45ee-ab2c-5684325e207a)
+![image](https://github.com/user-attachments/assets/0fcbf9cd-262b-4454-acc6-bbe4ae29b939)
 
 New technique to reach the same purposes without using vulnerable drivers was discovered. The tool, named `EDR-Freeze` demonstrates a critical shift in endpoint evasion technique, leveraging native Windows components and security mechanisms to force PPL-protected processes for nefarious objective. I'll add other details about this cool new cutting-edge approach.
 
