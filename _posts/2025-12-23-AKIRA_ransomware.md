@@ -10,7 +10,7 @@ subtitle: The new version of the Akira ransomware introduces significant improve
 
 <img width="612" height="588" alt="akira" src="https://github.com/user-attachments/assets/a32ae5a8-af83-4429-9e72-e4252b598f0e"/>
 
-here you can find the older(first) one -> https://5hidobu.github.io/2023-06-10-AKIRA-RANSOMWARE-_-Neo_Tokio-is-about-to-explode/
+[here](https://5hidobu.github.io/2023-06-10-AKIRA-RANSOMWARE-_-Neo_Tokio-is-about-to-explode/). you can find the post about the older(first) one.
 
 ## Read the research
 below you can find a brief overview, and attached pdf.
@@ -26,6 +26,7 @@ Log deletion to hide traces, advanced string obfuscation, and stronger encryptio
 ---
 
 <object data="/assets/AKIRA.pdf" width="100%" height="800" type="application/pdf"></object>
+
 
 
 
