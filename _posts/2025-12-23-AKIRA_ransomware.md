@@ -19,12 +19,14 @@ below you can find a brief overview, and attached pdf.
 Log deletion to hide traces, advanced string obfuscation, and stronger encryption keys: these are the updates that confirm Akira's evolution towards greater stealth, complexity, and resilience against detection and forensic investigations.
 
 3 key points:
-📈 Increase in victims: significant expansion and growing impact.
+📈 Increase in victims: significant expansion and growing impact. 
 ⚙️ Evolving tactics: refined code and adaptive attacks.
 🛡️ Anti-DFIR: log deletion and advanced obfuscation to hinder investigations.
+
 ---
 
 <object data="/assets/AKIRA.pdf" width="100%" height="800" type="application/pdf"></object>
+
 
 
 
