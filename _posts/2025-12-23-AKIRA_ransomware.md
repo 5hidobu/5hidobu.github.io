@@ -10,7 +10,7 @@ subtitle: The new version of the Akira ransomware introduces significant improve
 
 # THE AKIRA RANSOMWARE (new version)
 
-![image]("https://github.com/user-attachments/assets/a32ae5a8-af83-4429-9e72-e4252b598f0e")
+<img width="612" height="588" alt="akira" src="https://github.com/user-attachments/assets/a32ae5a8-af83-4429-9e72-e4252b598f0e" />
 
 ## Read the research
 Log deletion to hide traces, advanced string obfuscation, and stronger encryption keys: these are the updates that confirm Akira's evolution towards greater stealth, complexity, and resilience against detection and forensic investigations.
@@ -20,7 +20,8 @@ Log deletion to hide traces, advanced string obfuscation, and stronger encryptio
 ⚙️ Evolving tactics: refined code and adaptive attacks.
 🛡️ Anti-DFIR: log deletion and advanced obfuscation to hinder investigations.
 
-<object data="/assets/AKIRA.pdf" width="100%" height="600" type="application/pdf"></object>
+<object data="/assets/AKIRA.pdf" width="100%" height="800" type="application/pdf"></object>
+
 
 
 
